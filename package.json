@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.2.0"
+    "d3-dsv": "^1.0.10",
+    "node-fetch": "^2.2.0",
+    "papaparse": "^4.6.0"
   }
 }
