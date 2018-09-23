@@ -5,6 +5,33 @@ async function getTechniques() {
     return parseTsvString(getTsvStringWithoutHeader(tsvString));
 }
 
+function getTags(techniques) {
+    let tags = [];
+
+    for (let tech of techniques) {
+        let cleanTagString = tech.tags.replace(" ", "");
+
+        for (let tag of cleanTagString.split(",")) {
+            if (!tags.find(t => t == tag))
+                tags.push(tag);
+        }
+    }
+
+    return tags;
+}
+
+function getField(techniques, field) {
+    let collection = [];
+
+    for (let tech of techniques) {
+        if (!collection.find(o => o == tech[field])) {
+            collection.push(tech[field]);
+        }
+    }
+
+    return collection;
+}
+
 const ColumnHeaderMappings = [
     "videoType",
     "startingPosition",
@@ -19,6 +46,7 @@ const ColumnHeaderMappings = [
 
 function parseTsvString(tsvString) {
     let data = [];
+    let currentId = 0;
 
     for (let row of tsvString.split("\n")) {
         let columns = row.split("\t");
@@ -28,6 +56,8 @@ function parseTsvString(tsvString) {
         for (let i = 0; i < ColumnHeaderMappings.length; i++) {
             parsedCol[ColumnHeaderMappings[i]] = columns[i];
         }
+
+        parsedCol.id = currentId++;
 
         data.push(parsedCol);
     }
