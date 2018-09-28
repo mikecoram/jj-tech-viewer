@@ -23,6 +23,16 @@ let fighterBs;
 
     populateTechniquesTable(techniques);
 
+    document.getElementById("gif-view-overlay").onclick = () => {
+        document.getElementById("gif-view-overlay").style = "display:none;";
+    };
+
+    document.onkeyup = (e) => {
+        if (e.key == "Escape") {
+            document.getElementById("gif-view-overlay").style = "display:none;";
+        }
+    }
+
 })();
 
 function populateTechniquesTable(techniques) {
@@ -92,11 +102,15 @@ function applyFilters() {
 
 function viewGif(id) {
     const tech = techniques.find(t => t.id === id);
-    document.getElementById("gif-view").innerHTML = `<img width=560 height=315 src="${tech.gifLink}" onclick="dismissGif()" />`;
-}
 
-function dismissGif() {
-    document.getElementById("gif-view").innerHTML = "";
+    const videoUrl = tech.gifLink.replace(".gif", ".mp4");
+
+    document.getElementById("gif-view-overlay").style = "display:block";
+
+    document.getElementById("gif-view-overlay").innerHTML = 
+       `<video id="gif-view" class="gif-view" width="960" height="540" controls autoplay loop>
+            <source type="video/mp4" src="${videoUrl}">
+        </video>`;
 }
 
 function search() {
