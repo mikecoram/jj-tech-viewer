@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Technique } from './Technique';
+import { Button } from 'reactstrap';
 
 interface IProps {
     data: Technique;
+    view: (t: Technique) => void;
 }
 
 export class TechniqueRow extends React.Component<IProps, any> {
@@ -15,8 +17,9 @@ export class TechniqueRow extends React.Component<IProps, any> {
         <td>{this.props.data.techniqueType}</td>
         <td>{this.props.data.techniqueName}</td>
         <td>{this.props.data.fighterA}</td>
+        <td><Button onClick={() => {this.props.view(this.props.data);}} color='primary'>View</Button></td>
       </tr>
-    )
+    );
   }
 
 }

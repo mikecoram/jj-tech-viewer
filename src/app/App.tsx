@@ -9,7 +9,13 @@ class App extends React.Component {
 
   public render() {
     return (
-      <TechniqueList />
+      <main>
+        <div className='container'>
+          <div className='col-xs-12'>
+            <TechniqueList />
+          </div>
+        </div>
+      </main>
     );
   }
   

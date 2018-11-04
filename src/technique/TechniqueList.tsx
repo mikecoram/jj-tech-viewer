@@ -26,7 +26,6 @@ export class TechniqueList extends React.Component<any, IState> {
       displayTechniques: techniques,
       techniques
     });
-    console.log(techniques);
   }
 
   public render() {
@@ -39,6 +38,7 @@ export class TechniqueList extends React.Component<any, IState> {
             <th>Type</th>
             <th>Technique</th>
             <th>Fighter</th>
+            <th/>
           </tr>
         </thead>
         <tbody>
@@ -53,7 +53,7 @@ export class TechniqueList extends React.Component<any, IState> {
 
     for (const t of this.state.displayTechniques) {
       elements.push(
-        <TechniqueRow data={t} />
+        <TechniqueRow data={t} view={(vt) => {console.log(vt);}} />
       );
     }
 
