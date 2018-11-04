@@ -4,20 +4,24 @@ import { Table } from 'reactstrap';
 import { TechniqueRow } from './TechniqueRow';
 import { Technique } from './Technique';
 
-interface IState {
-  techniques: Technique[]
+interface IProps {
+  onView: (t: Technique) => void;
 }
 
-export class TechniqueList extends React.Component<any, IState> {
+interface IState {
+  data: Technique[];
+}
+
+export class TechniqueList extends React.Component<IProps, IState> {
   
   constructor(props: any) {
     super(props);
-    
-    this.state = { techniques: [] };
+
+    this.state = { data: [] };
   }
 
   public async componentDidMount() {
-    this.setState({ techniques: await getTechniques() });
+    this.setState({ data: await getTechniques() });
   }
 
   public render() {
@@ -41,15 +45,8 @@ export class TechniqueList extends React.Component<any, IState> {
   }
 
   private getTechniqueRows() : JSX.Element[] {
-    const elements : JSX.Element[] = [];
-
-    for (const t of this.state.techniques) {
-      elements.push(
-        <TechniqueRow key={t.id} data={t} view={(vt) => {console.log(vt);}} />
-      );
-    }
-
-    return elements;
+    return this.state.data.map(t => 
+      <TechniqueRow key={t.id} data={t} onView={this.props.onView} />
+    );
   }
-
 }
