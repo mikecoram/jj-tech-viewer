@@ -23,7 +23,7 @@ export class TechniqueViewer extends React.Component<IProps, IState> {
   public render() {
     return (
       <div>
-        <GifView src={this.props.playlist[this.state.currentIndex].videoUrl} />
+        <GifView src={this.props.playlist[this.state.currentIndex].gifLink} />
       </div>
     );
   }

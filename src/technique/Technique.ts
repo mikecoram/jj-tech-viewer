@@ -2,6 +2,7 @@ export class Technique {
   public id: number;
   public videoType: string;
   public videoUrl: string;
+  public gifLink: string;
   public startingPosition: string;
   public techniqueType: string;
   public techniqueName: string;
