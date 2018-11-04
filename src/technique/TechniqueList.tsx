@@ -6,26 +6,18 @@ import { Technique } from './Technique';
 
 interface IState {
   techniques: Technique[]
-  displayTechniques: Technique[]
 }
 
 export class TechniqueList extends React.Component<any, IState> {
   
   constructor(props: any) {
     super(props);
-
-    this.state = {
-      displayTechniques: [],
-      techniques: []
-    };
+    
+    this.state = { techniques: [] };
   }
 
   public async componentDidMount() {
-    const techniques = await getTechniques();
-    this.setState({
-      displayTechniques: techniques,
-      techniques
-    });
+    this.setState({ techniques: await getTechniques() });
   }
 
   public render() {
@@ -51,9 +43,9 @@ export class TechniqueList extends React.Component<any, IState> {
   private getTechniqueRows() : JSX.Element[] {
     const elements : JSX.Element[] = [];
 
-    for (const t of this.state.displayTechniques) {
+    for (const t of this.state.techniques) {
       elements.push(
-        <TechniqueRow data={t} view={(vt) => {console.log(vt);}} />
+        <TechniqueRow key={t.id} data={t} view={(vt) => {console.log(vt);}} />
       );
     }
 
