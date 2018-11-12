@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Technique } from 'src/technique/Technique';
-import { GifView } from 'src/gif-view/GifView';
+import { GifView } from './GifView';
+
+import './TechniqueViewer.css';
 
 interface IProps {
   playlist: Technique[];
@@ -22,7 +24,7 @@ export class TechniqueViewer extends React.Component<IProps, IState> {
 
   public render() {
     return (
-      <div>
+      <div className='technique-viewer'>
         <GifView src={this.props.playlist[this.state.currentIndex].gifLink} />
       </div>
     );
