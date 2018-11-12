@@ -17,7 +17,11 @@ export class TechniqueRow extends React.Component<IProps, any> {
         <td>{this.props.data.techniqueType}</td>
         <td>{this.props.data.techniqueName}</td>
         <td>{this.props.data.fighterA}</td>
-        <td><Button onClick={() => {this.props.onView(this.props.data)}} color='primary'>View</Button></td>
+        <td>
+          <Button onClick={() => {this.props.onView(this.props.data)}} color='primary'>
+            <span className="fa fa-eye"/>
+          </Button>
+        </td>
       </tr>
     );
   }

@@ -5,6 +5,7 @@
   "dependencies": {
     "@types/reactstrap": "^6.4.2",
     "bootstrap": "^4.1.3",
+    "font-awesome": "^4.7.0",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
